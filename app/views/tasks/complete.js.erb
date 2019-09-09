@@ -1,0 +1,23 @@
+//if(<%#= @task.is_completed %>){
+//    $('.complete-task[data-task-id=<%= @task.id %>]').text('Make active');
+//} else {
+//    $('.complete-task[data-task-id=<%= @task.id %>]').text('Make completed');
+//}
+
+if(Page.controller() === 'tasks' && (Page.action() == 'completed' || Page.action() == 'active')){
+    $('.task[data-task-id=<%= @task.id %>]').fadeOut();
+}
+if(Page.controller() === 'tasks' && Page.action() == 'index') {
+
+    if(<%= @task.is_completed %>){
+        $('.task[data-task-id=<%= @task.id %>] .complete-task')
+        $('.task[data-task-id=<%= @task.id %>] .complete-task').text('Make active');
+    } else {
+        $('.task[data-task-id=<%= @task.id %>] .complete-task').text('Make completed');
+    }
+}
+
+//if($('.complete-task[data-task-id=<%= @task.id %>][data-need-page-reload=true]')){
+//    window.location.reload();
+    //Turbolinks.visit(window.location);
+//}

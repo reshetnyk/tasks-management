@@ -1,0 +1,71 @@
+<div class="col-12">
+  <div class="task card card-body mb-2">
+    <div class="d-flex justify-content-between">
+      <h3 class="task__title card-title">
+        <a class="task__title-link" href="<%= task_path(@task.id) %>"><%= @task.title %></a>
+      </h3>
+      <div class="task__buttons">
+        <%= link_to 'edit', edit_task_path(@task.id) %>
+        <%= link_to 'delete', task_path(@task.id), method: :delete %>
+      </div>
+    </div>
+    <p class="task__description card-text"><%= @task.description %></p>
+    <div class="d-flex justify-content-between">
+      <time class="task__due-date">deadline: <%= @task.due_date.strftime("%d.%m.%Y") %></time>
+      <div class="task__priority">
+        <% @task.priority.times do |star| %>
+          <span class="star text-orange">&#9733;</span>
+        <% end %>
+        <% (5-@task.priority).times do |star| %>
+          <span class="star">&#9733;</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<%#= form_with(model: @task, local: true) do |form| %>
+
+  <%# if @task.errors.any? %>
+<!--    <div id="error_explanation">-->
+<!--      <h2>-->
+<!--        <%#= pluralize(@task.errors.count, "error") %> prohibited-->
+<!--        this article from being saved:-->
+<!--      </h2>-->
+<!--      <ul>-->
+        <%# @task.errors.full_messages.each do |msg| %>
+<!--          <li><%#= msg %></li>-->
+        <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
+  <%# end %>
+
+<!--  <p>-->
+<!--    <%#= form.label :title %><br>-->
+    <%#= form.text_field :title %>
+<!--  </p>-->
+
+<!--  <p>-->
+<!--    <%#= form.label :description %><br>-->
+    <%#= form.text_area :description %>
+<!--  </p>-->
+
+<!--  <p>-->
+<!--    <%#= form.label :priority %><br>-->
+    <%#= form.number_field :priority, max: 5, min: 1 %>
+<!--  </p>-->
+
+<!--  <p>-->
+<!--    <%#= form.label :due_date %><br>-->
+    <%#= form.date_field :due_date %>
+<!--  </p>-->
+
+
+<!--  <p>-->
+    <%#= form.submit %>
+<!--  </p>-->
+
+<%# end %>
+<!--"data-provide" => "datepicker" -->

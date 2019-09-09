@@ -1,0 +1,27 @@
+// Place all the styles related to the tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.task__title-link{
+  color: inherit;
+}
+.task__title-link:hover{
+   color: inherit;
+}
+.task__buttons{
+  visibility: hidden;
+}
+.task:hover .task__buttons{
+  visibility: visible;
+}
+.task__priority{
+  font-size: 0;
+}
+
+.star{
+  font-size: 16px;
+  color: lightgrey;
+}
+.text-orange{
+  color: darkorange;
+}

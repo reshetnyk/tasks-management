@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TasksManagement</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= tag :meta, name: :psj, action: action_name, controller: controller_name%>
+
+  </head>
+
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+      <h5 class="my-0 mr-md-auto font-weight-normal">Tasks management</h5>
+
+      <nav class="my-2 my-md-0 mr-md-3">
+        <% if user_signed_in? %>
+          <%= link_to 'Active tasks', tasks_active_path, :class => 'p-2 text-dark' %>
+          <%= link_to 'Completed tasks', tasks_completed_path, :class => 'p-2 text-dark' %>
+          <%= link_to 'New task', new_task_path, :class => 'p-2 text-dark' %>
+          <div class="dropdown d-inline">
+            <a class="p-2 text-dark dropdown-toggle" href="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name + ' ' + current_user.last_name %></a>
+            <div class="dropdown-menu" aria-labelledby="dropdown09">
+              <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'dropdown-item' %>
+            </div>
+          </div>
+        <% else %>
+          <%= link_to 'Sign Up', new_user_registration_path, :class => 'p-2 text-dark' %>
+          <%= link_to 'Log In', new_user_session_path, :class => 'btn btn-primary' %>
+        <% end %>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="col-12">
+        <% flash.each do |name, message| %>
+          <div class="alert <%= bootstrap_class_for(name) %>">
+            <button class="close" data-dismiss="alert">&times;</button>
+            <%= message %>
+          </div>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+</html>
