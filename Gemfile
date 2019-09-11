@@ -7,9 +7,8 @@ gem 'popper_js', '~> 1.14.5'
 gem 'bootstrap', '~> 4.3.1'
 # gem 'bootstrap-datepicker-rails'
 gem 'devise'
-group :development do
-  gem 'letter_opener'
-end
+gem "letter_opener", :group => :development
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
 end
@@ -25,7 +24,6 @@ group :development do
 end
 group :production do
   gem 'pg'
-  gem 'rails_12factor'
 end
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

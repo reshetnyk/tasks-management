@@ -15,16 +15,5 @@ module TasksManagement
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    #
-    ActionMailer::Base.smtp_settings = {
-        address:              'smtp.gmail.com',
-        port:                 587,
-        domain:               'glacial-hamlet-30927.herokuapp.com',
-        user_name:            'dsgvjdfhhsfgvrtfsbvrgbrsf@gmail.com',
-        password:             'qqq111```',
-        authentication:       :plain,
-        enable_starttls_auto: true
-    }
-
   end
 end
