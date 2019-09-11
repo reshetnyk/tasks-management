@@ -19,7 +19,7 @@ module TasksManagement
     ActionMailer::Base.smtp_settings = {
         address:              'smtp.gmail.com',
         port:                 587,
-        domain:               'gmail.com',
+        domain:               'glacial-hamlet-30927.herokuapp.com',
         user_name:            'dsgvjdfhhsfgvrtfsbvrgbrsf@gmail.com',
         password:             'qqq111```',
         authentication:       :plain,
