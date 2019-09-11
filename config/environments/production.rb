@@ -97,8 +97,8 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :user_name => 'rocky-island-443202',
-      :password => 'rockyisland443202',
+      :user_name => 'rocky-island-4432021',
+      :password => 'rockyisland44320212',
       :domain => 'rocky-island-44320.herokuapp.com',
       :address => 'smtp.sendgrid.net',
       :port => 587,
