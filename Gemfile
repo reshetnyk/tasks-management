@@ -7,8 +7,9 @@ gem 'popper_js', '~> 1.14.5'
 gem 'bootstrap', '~> 4.3.1'
 # gem 'bootstrap-datepicker-rails'
 gem 'devise'
-gem "letter_opener", :group => :development
-
+group :development do
+  gem 'letter_opener'
+end
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
 end
