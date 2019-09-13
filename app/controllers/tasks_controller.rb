@@ -2,8 +2,29 @@ class TasksController < ApplicationController
 
 
   def index
-    @tasks = Task.where(user_id: current_user.id)
-    sort_tasks
+    @tasks = current_user.tasks
+    @status = params[:status]
+    @sort = params[:sort]
+
+    if @status
+      if @status.downcase == 'active'
+        @tasks = @tasks.where(is_completed: false)
+      end
+
+      if @status.downcase == 'completed'
+        @tasks = @tasks.where(is_completed: true)
+      end
+    end
+
+    if @sort
+      if @sort.downcase == 'asc'
+        @tasks = @tasks.order(Task.arel_table['title'])
+      end
+
+      if @sort.downcase == 'desc'
+        @tasks = @tasks.order(Task.arel_table['title'].desc)
+      end
+    end
   end
 
   def new
@@ -72,18 +93,11 @@ class TasksController < ApplicationController
     end
   end
 
-  def completed
-    @tasks = Task.where(user_id: current_user.id, is_completed: true)
-    sort_tasks
-  end
-
-  def active
-    @tasks = Task.where(user_id: current_user.id, is_completed: false)
-    sort_tasks
-  end
-
   def access_denied
   end
+
+
+
 
   private def if_someones_elses_task(task)
     if task.user_id != current_user.id
@@ -92,13 +106,6 @@ class TasksController < ApplicationController
   end
   private def task_params
     params.require(:task).permit(:title, :description, :priority, :due_date)
-  end
-  private def sort_tasks
-    @sort = params[:sort]
-    puts params
-    if @sort == 'title'
-      @tasks = @tasks.order(Task.arel_table['title'])
-    end
   end
 end
 

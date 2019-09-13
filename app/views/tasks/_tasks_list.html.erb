@@ -2,8 +2,17 @@
 <div class="d-flex justify-content-center">
     <div id="check-all-tasks" class="btn btn-link">check all</div>
     <div id="uncheck-all-tasks" class="btn btn-link">uncheck all</div>
-    <%= link_to 'sort by title', request.path_info + '?sort=title', class:'btn btn-link', method: :get %>
 
+    <% if params[:sort] %>
+      <% if params[:sort]=='asc' %>
+        <%= link_to 'sort ▼', params.merge(:sort => 'desc').permit(:sort, :status), class:'btn btn-link', method: :get %>
+      <% end %>
+      <% if params[:sort]=='desc' %>
+        <%= link_to 'sort ▲', params.merge(:sort => 'asc').permit(:sort, :status), class:'btn btn-link', method: :get %>
+      <% end %>
+    <% else %>
+      <%= link_to 'sort', params.merge(:sort => 'asc').permit(:sort, :status), class:'btn btn-link', method: :get %>
+    <% end %>
 </div>
 <% @tasks.each do |task| %>
 <div class="card mb-2 task" data-task-id="<%= task.id %>">
