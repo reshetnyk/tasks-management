@@ -27,17 +27,17 @@ class TasksController < ApplicationController
     end
   end
 
-  def new
-    @task = current_user.tasks.build
-  end
-
   def create
-    @task = current_user.tasks.build(task_params)
-    if @task.save
-      redirect_to @task
+    if params[:task]
+      @task = current_user.tasks.build(task_params)
+      if @task.save
+        redirect_to @task
+      else
+        render 'tasks/create'
+      end
     else
-      puts @task.errors.inspect
-      render 'new'
+      @task = current_user.tasks.build
+      render 'tasks/create'
     end
   end
 
