@@ -6,7 +6,7 @@ gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.5'
 gem 'bootstrap', '~> 4.3.1'
 # gem 'bootstrap-datepicker-rails'
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem "letter_opener", :group => :development
 
 group :development, :test do
