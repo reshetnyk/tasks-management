@@ -5,7 +5,7 @@
         <a class="task__title-link" href="<%= task_path(@task.id) %>"><%= @task.title %></a>
       </h3>
       <div class="task__buttons">
-        <%= link_to 'edit', edit_task_path(@task.id) %>
+        <%= link_to 'edit', task_path(:id => @task.id, :act => 'update'), method: :get  %>
         <%= link_to 'delete', task_path(@task.id), method: :delete %>
       </div>
     </div>
